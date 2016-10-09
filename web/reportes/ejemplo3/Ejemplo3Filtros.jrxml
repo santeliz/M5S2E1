@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dbd975db-0fb3-419a-9f6d-05a08b877a61">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<parameter name="fechainicio" class="java.util.Date"/>
+	<parameter name="fechafin" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select * from empleado where fecha_ingreso between $P{fechainicio} and $P{fechafin}]]>
+	</queryString>
+	<field name="IDEMPLEADO" class="java.lang.Integer"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="DUI" class="java.lang.String"/>
+	<field name="FECHA_INGRESO" class="java.sql.Date"/>
+	<field name="SALARIO" class="java.math.BigDecimal"/>
+	<field name="FECHA_NACIMIENTO" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="58" height="36" uuid="a4e4188c-99d0-4898-b32f-4f249fbbd374"/>
+				<imageExpression><![CDATA["C:\\Users\\JAVA\\Documents\\NetBeansProjects\\M5S2E1\\web\\imagenes\\rrhh.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="282" y="16" width="207" height="20" uuid="37d7a38a-504e-4d18-be80-6cfcae2a9cb2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE EMPLEADOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="46" width="802" height="1" uuid="9d0075b9-8613-40c9-a4e5-d229f4cacbac"/>
+			</line>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="702" y="0" width="100" height="20" uuid="6adc4bfd-78ad-4559-99af-83c874dcd799"/>
+				<textElement>
+					<font size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="7" width="40" height="20" uuid="5495f19d-0917-4dbe-b222-d1295d9be19f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="7" width="70" height="20" uuid="fcd0a174-016f-424b-86c8-a5aecdb23bb0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="7" width="100" height="20" uuid="5eb6c2e6-e345-4da1-a531-05ab37c4fb8b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="243" y="7" width="105" height="20" uuid="e1722fec-037c-4255-97c3-0072be4ff36b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE INGRESO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="7" width="118" height="20" uuid="9285a303-1f7f-4c11-b4d8-88194c06e2c1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE NACIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="7" width="100" height="20" uuid="74c5620d-8fa6-4841-9253-7cbd4ba33471"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALARIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="7" y="2" width="27" height="20" uuid="e119ea0a-cdd5-496a-847a-b019d95281d3"/>
+				<textFieldExpression><![CDATA[$F{IDEMPLEADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="2" width="100" height="20" uuid="0b12ba27-4159-428b-8ca9-076e02a9e37a"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="3" width="100" height="20" uuid="6bf803a5-f6ca-4b88-a42e-2ea1cbc4b573"/>
+				<textFieldExpression><![CDATA[$F{DUI}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="247" y="3" width="100" height="20" uuid="3b99858b-2c54-4a27-9bb7-0536fd542cd8"/>
+				<textFieldExpression><![CDATA[$F{FECHA_INGRESO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="352" y="6" width="100" height="20" uuid="532c7a5f-308c-41ff-9a6a-d3a97af2069a"/>
+				<textFieldExpression><![CDATA[$F{FECHA_NACIMIENTO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement x="479" y="5" width="100" height="20" uuid="cabfb7d8-eb99-4733-98b3-ce1195e560f3"/>
+				<textFieldExpression><![CDATA[$F{SALARIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

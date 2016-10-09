@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67c08e7f-45fd-45b6-b914-b88c64f56074">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select e.idempleado, e.NOMBRE as nombreEmpleado, f.fecha, c.nombre, fp.descripcion AS formaPago
+from factura f 
+inner join EMPLEADO e on f.idempleado = e.IDEMPLEADO 
+inner join cliente c on c.idcliente = f.idcliente 
+inner join FORMA_PAGO fp on fp.idforma_pago = f.idforma_pago
+order by e.IDEMPLEADO, f.fecha]]>
+	</queryString>
+	<field name="idempleado" class="java.lang.Integer"/>
+	<field name="nombreEmpleado" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="formaPago" class="java.lang.String"/>
+	<group name="EMPLEADO_GROUP">
+		<groupExpression><![CDATA[$F{idempleado}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<textField>
+					<reportElement x="11" y="4" width="37" height="20" uuid="41b41455-0b2f-45ff-ae6f-0b15736c0a53"/>
+					<textFieldExpression><![CDATA[$F{idempleado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="39" y="4" width="152" height="20" uuid="c2cadd9f-45f5-44b4-b8f0-6b122b7d9a41"/>
+					<textFieldExpression><![CDATA[$F{nombreEmpleado}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="38" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="129" y="0" width="301" height="20" uuid="9132c5f6-047f-43c3-a299-723378f6c7d1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE FACTURAS POR EMPLEADO]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="42a128a3-e420-4ded-b642-22dddbda6cba"/>
+				<textElement>
+					<font size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="58" height="36" uuid="55296928-8e17-451c-91fe-1ea8c8809abd"/>
+				<imageExpression><![CDATA["C:\\Users\\JAVA\\Documents\\NetBeansProjects\\M5S2E1\\web\\imagenes\\rrhh.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="11" y="39" width="534" height="1" uuid="4dfa265a-d455-405a-b5ef-e77c745011fc"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="72" y="2" width="100" height="20" uuid="7015382c-2e53-4a07-b666-453c9376685f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="2" width="100" height="20" uuid="baaea30b-9dde-448d-9faa-a5bd1cbeb3b9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="2" width="100" height="20" uuid="e37eb84d-9a5a-4af7-8532-5599822af54a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="72" y="4" width="100" height="20" uuid="77e5177d-9bf4-4222-a442-79cf500cea2f"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="4" width="100" height="20" uuid="cf4cbec2-2972-4d6e-ab4d-cae30a38e66f"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="4" width="100" height="20" uuid="719e9ca8-9121-4ef3-aa63-08f96a4d4773"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{formaPago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
